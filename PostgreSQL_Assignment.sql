@@ -49,3 +49,7 @@ INSERT INTO enrollment(enrollment_id, student_id, course_id) VALUES
 (2, 1, 2), 
 (3, 2, 1), 
 (4, 3, 2);
+
+-- Query 1: Insert a new student record with the following details:
+INSERT INTO students(student_id, student_name,age,email,frontend_mark,backend_mark) VALUES
+(7, 'Shohedul',25,'mdshohed@gmail.com',59,60);
