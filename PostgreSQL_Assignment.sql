@@ -53,3 +53,20 @@ INSERT INTO enrollment(enrollment_id, student_id, course_id) VALUES
 -- Query 1: Insert a new student record with the following details:
 INSERT INTO students(student_id, student_name,age,email,frontend_mark,backend_mark) VALUES
 (7, 'Shohedul',25,'mdshohed@gmail.com',59,60);
+
+-- Query 2: Retrieve the names of all students who are enrolled in the course titled 'Next.js'.
+SELECT s.student_name
+FROM students s
+JOIN enrollment e ON s.student_id = e.student_id
+JOIN courses c ON e.course_id = c.course_id
+WHERE c.course_name = 'Next.js';
+
+-- Query 3: Update the status of the student with the highest total (frontend_mark + backend_mark) to 'Awarded'.
+UPDATE students
+SET status = 'Awarded'
+WHERE student_id = (
+  SELECT student_id
+  FROM students
+  ORDER BY (frontend_mark + backend_mark) DESC
+  LIMIT 1
+);
